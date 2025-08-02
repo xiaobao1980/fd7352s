@@ -1,0 +1,21 @@
+menuconfig SEEKWAVE_BSP_DRIVERS_V20
+        bool "SeekWave Platform Drivers For SeekWave Chip"
+        default n
+        help
+        This is support seekwave chip for incard board
+        if you want to buildin bsp driver
+        please say "y" 
+        Thanks.
+
+config SEEKWAVE_PLD_RELEASE
+    bool "seekwave Platfrom support chip recoverymode"
+    depends on SEEKWAVE_BSP_DRIVERS_V20
+    default n
+
+#seekwave`s wifi bluetooth device driver etc
+if  SEEKWAVE_BSP_DRIVERS_V20
+source "drivers/misc/seekwaveplatform_v20/usb/Kconfig"
+source "drivers/misc/seekwaveplatform_v20/sdio/Kconfig"
+source "drivers/misc/seekwaveplatform_v20/skwutil/Kconfig"
+source "drivers/misc/seekwaveplatform_v20/pcie/Kconfig"
+endif
